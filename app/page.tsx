@@ -1,65 +1,103 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Bot, LayoutTemplate, Network, Radar } from "lucide-react";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { HeroSection } from "@/components/HeroSection";
 
-export default function Home() {
+const featureCards = [
+  {
+    icon: Network,
+    title: "Curated free API library",
+    description: "Mix 2-3 no-key or optional-key public APIs with compatibility scoring and warnings.",
+  },
+  {
+    icon: LayoutTemplate,
+    title: "Template-aware planning",
+    description: "Blend built-in UI presets with inspiration URLs or screenshots for fast style direction.",
+  },
+  {
+    icon: Bot,
+    title: "Codex build pack",
+    description: "Generate a product idea, file tree, feature ladder, and implementation-ready prompt.",
+  },
+  {
+    icon: Radar,
+    title: "Demo-first delivery",
+    description: "Ship one working prototype route plus a deployability checklist tuned for Vercel.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <HeroSection />
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <div>
+                <p className="text-sm uppercase tracking-[0.24em] text-brand">Why it works</p>
+                <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Everything needed for a hackathon MVP</h2>
+              </div>
+              <Link href="/studio" className="hidden items-center gap-2 text-sm text-slate-300 hover:text-white md:inline-flex">
+                Open studio
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {featureCards.map((card) => (
+                <article key={card.title} className="glass-panel rounded-[2rem] p-6">
+                  <div className="inline-flex rounded-2xl border border-brand/30 bg-brand/10 p-3 text-brand">
+                    <card.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-xl font-semibold text-white">{card.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{card.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="px-4 pb-20 sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1fr_0.9fr]">
+            <div className="glass-panel rounded-[2rem] p-6">
+              <p className="text-sm uppercase tracking-[0.24em] text-brand">Example API mashups</p>
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
+                {[
+                  ["REST Countries + Open-Meteo + Frankfurter", "Travel Cost Planner"],
+                  ["GitHub REST + CoinGecko", "Developer Market Pulse"],
+                  ["Open Library + Universities", "Student Reading Explorer"],
+                  ["NASA APOD + Open-Meteo", "Stargazing Planner"],
+                ].map(([combo, product]) => (
+                  <div key={combo} className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                    <p className="text-sm text-muted">{combo}</p>
+                    <p className="mt-3 text-xl font-semibold text-white">{product}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="glass-panel rounded-[2rem] p-6">
+              <p className="text-sm uppercase tracking-[0.24em] text-brand">Demo flow</p>
+              <div className="mt-5 space-y-4">
+                {[
+                  "Choose 2-3 APIs from the library.",
+                  "Connect them visually on the React Flow canvas.",
+                  "Layer in a built-in template plus inspiration URL or screenshot.",
+                  "Generate a polished MVP plan, build prompt, and demo-ready direction.",
+                ].map((step, index) => (
+                  <div key={step} className="flex gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+                      {index + 1}
+                    </div>
+                    <p className="text-sm leading-7 text-slate-200">{step}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+      <Footer />
     </div>
   );
 }

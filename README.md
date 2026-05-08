@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# API Remix Studio
 
-## Getting Started
+API Remix Studio is a Codex-powered MVP generation layer that turns free public API combinations and design inspiration into buildable software prototypes.
 
-First, run the development server:
+## Demo Flow
+
+1. Open `/studio` and choose 2-3 APIs from the curated library.
+2. Connect APIs on the React Flow canvas and review the compatibility score.
+3. Pick a built-in template, optionally add an inspiration URL, and upload a screenshot reference.
+4. Generate the `/preview` MVP pack with product idea, score breakdown, data flow, UI direction, file tree, Codex prompt, and deployment checklist.
+5. Open `/demo/travel-cost-planner` to explore the live working prototype.
+
+## Features
+
+- Futuristic landing page with lightweight 3D hero accent
+- Studio builder with API library, React Flow canvas, and inspector panel
+- Local TypeScript catalog for 12 free public APIs
+- Built-in template preset system with manual style remix controls
+- Compatibility engine with reasons, warnings, and free-tier risk notes
+- Idea generator with special-case mashups and fallback concept generation
+- MVP quality scoring model and feature prioritization
+- Working Travel Cost Planner demo backed by server-side route handlers
+- Production-friendly docs, CI, GitHub templates, and Vercel-ready setup
+
+## Screenshots
+
+- `docs/screenshots/landing-placeholder.png` (placeholder)
+- `docs/screenshots/studio-placeholder.png` (placeholder)
+- `docs/screenshots/preview-placeholder.png` (placeholder)
+- `docs/screenshots/demo-placeholder.png` (placeholder)
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS v4
+- React Flow via `@xyflow/react`
+- Recharts
+- Lucide React
+- Framer Motion
+- React Three Fiber + Drei for the optional hero object
+
+## Local Setup
 
 ```bash
+npm install
+npm run build
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Free APIs Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- REST Countries
+- Open-Meteo
+- Frankfurter
+- NASA APOD
+- PokéAPI
+- Open Library
+- Jikan Anime API
+- Nager.Date Public Holidays
+- GitHub REST API
+- Hipolabs Universities API
+- JokeAPI
+- CoinGecko public API
 
-## Learn More
+## Template Inspiration System
 
-To learn more about Next.js, take a look at the following resources:
+- Built-in presets live in [`lib/template-presets.ts`](/C:/Users/KIIT0001/Desktop/Projects/api-remix-studio/lib/template-presets.ts:1).
+- Inspiration URLs are carried into the generated style guide and Codex build prompt.
+- Screenshot uploads are lightweight MVP references only. The app stores the filename and surfaces a placeholder style profile instead of running image analysis.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The project is designed for the Vercel Hobby plan:
 
-## Deploy on Vercel
+1. Import the repository into Vercel.
+2. Keep the default `npm run build` build command.
+3. No database or paid API setup is required for the MVP.
+4. Optional secrets can be added later if you choose to extend NASA or GitHub usage beyond public/demo limits.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See [`docs/DEPLOYMENT.md`](/C:/Users/KIIT0001/Desktop/Projects/api-remix-studio/docs/DEPLOYMENT.md:1) for the full checklist.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Codex Workflow
+
+- Use the studio to explore API pairings.
+- Review the generated preview for scope, data flow, and template direction.
+- Copy the Codex build prompt from `/preview`.
+- Implement or extend the generated concept inside the same repo.
+
+See [`docs/CODEX_WORKFLOW.md`](/C:/Users/KIIT0001/Desktop/Projects/api-remix-studio/docs/CODEX_WORKFLOW.md:1) for the detailed loop.
+
+## Future Scope
+
+- Persist remix sessions in local storage or a hosted database
+- Add multi-demo generation beyond the travel prototype
+- Add downloadable proposal exports
+- Expand screenshot analysis into real vision-assisted style extraction
+- Introduce shareable remix URLs and collaboration workflows

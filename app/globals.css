@@ -1,26 +1,112 @@
 @import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07111f;
+  --foreground: #eff6ff;
+  --card: rgba(10, 23, 42, 0.82);
+  --card-strong: rgba(15, 33, 58, 0.96);
+  --muted: #94a3b8;
+  --border: rgba(148, 163, 184, 0.18);
+  --brand: #38bdf8;
+  --brand-2: #8b5cf6;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #fb7185;
+  --shadow: 0 30px 80px rgba(2, 6, 23, 0.45);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-strong: var(--card-strong);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", "SFMono-Regular", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(139, 92, 246, 0.16), transparent 22%),
+    linear-gradient(180deg, #040b16 0%, #07111f 42%, #020617 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.32);
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(10, 23, 42, 0.82), rgba(8, 15, 29, 0.86));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+.grid-surface {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #f8fafc 0%, #7dd3fc 45%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.xy-theme {
+  --xy-node-background-color-default: rgba(9, 18, 33, 0.94);
+  --xy-node-border-default: 1px solid rgba(56, 189, 248, 0.24);
+  --xy-edge-stroke-default: rgba(125, 211, 252, 0.6);
+  --xy-edge-stroke-width-default: 2;
+  --xy-handle-background-color-default: #38bdf8;
+  --xy-controls-button-background-color-default: rgba(10, 23, 42, 0.92);
+  --xy-controls-button-color-default: #e2e8f0;
+  --xy-controls-button-border-color-default: rgba(148, 163, 184, 0.24);
+  --xy-minimap-background-color-default: rgba(6, 13, 24, 0.88);
+}
+
+.recharts-default-tooltip {
+  border: 1px solid var(--border) !important;
+  background: rgba(8, 15, 29, 0.96) !important;
+  border-radius: 16px !important;
+}
+
+.recharts-tooltip-label,
+.recharts-tooltip-item {
+  color: var(--foreground) !important;
 }
